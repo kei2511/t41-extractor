@@ -57,3 +57,4 @@ Jalankan script melalui terminal:
 python ekstrak_t41_ke_t42.py --pdf "path/to/dokumen_t41.pdf" --template "path/to/template_t42.docx" --output "Laporan_T42.docx"
 ```
 *(Jalankan `python ekstrak_t41_ke_t42.py --help` untuk opsi lengkap)*
+
