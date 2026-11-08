@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Ekstraktor Ruang Lingkup T.4.1 ke T.4.2",
+  "version": "1.0.0",
+  "description": "Ekstrak ruang lingkup pengujian dari dokumen T.4.1 (PDF) ke format teks/clipboard atau langsung inject ke template T.4.2 (DOCX).",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": ["storage"]
+}
