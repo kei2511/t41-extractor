@@ -25,38 +25,61 @@
       </div>
     </header>
 
-    <!-- Step 1: Upload T.4.1 PDF -->
+    <!-- Peringatan Utama: Utamakan DOCX -->
+    <div class="alert-banner" role="alert">
+      <div class="alert-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+          <line x1="12" y1="9" x2="12" y2="13"></line>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+      </div>
+      <div class="alert-text">
+        <strong>Disarankan Menggunakan File DOCX:</strong> Gunakan file dokumen Word (<strong>.docx</strong>) untuk mempertahankan <strong>format bold, italic, spasi, dan perataan 100% persis</strong> seperti dokumen aslinya. Jika hanya tersedia file <strong>.pdf</strong>, sistem akan otomatis melakukan rekonstruksi teks & gaya font terbaik.
+      </div>
+    </div>
+
+    <!-- Step 1: Upload T.4.1 DOCX / PDF -->
     <section class="section-card">
       <div class="section-title">
         <span class="step-badge">1</span>
-        <span>Upload File T.4.1 (PDF)</span>
+        <span>Upload Dokumen T.4.1 (DOCX / PDF)</span>
       </div>
       <div id="drop-zone-pdf" class="drop-zone">
-        <input type="file" id="file-pdf" accept=".pdf" class="file-input">
+        <input type="file" id="file-pdf" accept=".docx,.pdf" class="file-input">
         <div class="drop-content">
           <svg class="drop-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="17 8 12 3 7 8"></polyline>
             <line x1="12" y1="3" x2="12" y2="15"></line>
           </svg>
-          <div class="drop-label" id="pdf-filename">Pilih atau Drag & Drop file <strong>T.4.1 (PDF)</strong></div>
-          <span class="drop-hint">Format PDF (Rencana SIT)</span>
+          <div class="drop-label" id="pdf-filename">Pilih atau Drag & Drop file <strong>T.4.1 (.docx diutamakan / .pdf)</strong></div>
+          <span class="drop-hint">Format didukung: Word (.docx) &amp; PDF (.pdf)</span>
         </div>
       </div>
     </section>
 
-    <!-- Step 2: Kolom Teks Hasil Ekstraksi & Copy to Clipboard -->
+    <!-- Step 2: Kolom Teks Hasil Ekstraksi (Rich Format) & Copy to Clipboard -->
     <section class="section-card" id="output-section">
       <div class="section-header-flex">
         <div class="section-title">
           <span class="step-badge">2</span>
           <span>Hasil Ekstraksi Ruang Lingkup</span>
         </div>
-        <span class="item-count-badge" id="item-count">0 item</span>
+        <div class="header-actions" style="display: flex; align-items: center; gap: 8px;">
+          <span id="source-badge" class="source-badge" style="display: none;"></span>
+          <span class="item-count-badge" id="item-count">0 item</span>
+          <button id="btn-clear" class="btn-icon" title="Reset / Bersihkan Teks" style="background: none; border: 1px solid var(--border-color); border-radius: 4px; padding: 3px 6px; cursor: pointer; color: var(--text-muted); display: inline-flex; align-items: center;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+          </button>
+        </div>
       </div>
       
       <div class="textarea-container">
-        <textarea id="result-text" placeholder="Hasil ekstraksi fungsi-fungsi yang diuji akan muncul di sini... Anda juga bisa mengedit langsung teks ini sebelum dicopy atau diinjeksi." rows="10"></textarea>
+        <div id="result-text" class="rich-editor" contenteditable="true" data-placeholder="Hasil ekstraksi fungsi-fungsi yang diuji akan muncul di sini lengkap dengan format bold/italic... Anda juga bisa mengedit langsung teks ini sebelum dicopy atau diinjeksi."></div>
       </div>
 
       <div class="action-buttons-grid">
@@ -65,7 +88,7 @@
             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
           </svg>
-          <span>Copy to Clipboard</span>
+          <span>Copy with Formatting</span>
         </button>
         <button id="btn-download-txt" class="btn btn-secondary" disabled>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -94,7 +117,7 @@
             <line x1="9" y1="15" x2="15" y2="15"></line>
           </svg>
           <div class="drop-label" id="docx-filename">Pilih file <strong>Template T.4.2 (.docx)</strong> jika ada</div>
-          <span class="drop-hint">Otomatis menggantikan tabel fungsi yang diuji</span>
+          <span class="drop-hint">Otomatis menggantikan tabel fungsi yang diuji dengan format rapi</span>
         </div>
       </div>
       <button id="btn-inject-docx" class="btn btn-accent" disabled>
